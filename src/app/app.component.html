@@ -1,10 +1,51 @@
-<h1>NgIf</h1>
-<input type="text" required  [(ngModel)]="person.name">
-<p *ngIf="person.name === 'Aldo'">Soy Aldo</p>
-<p *ngIf="person.name != 'Aldo' && person.age == 18">No Soy Aldo</p>
+
+<h1>ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<div [ngSwitch]="person.name">
+  <p *ngSwitchCase="'Aldo'">
+    La persona es Aldo
+  </p>
+  <p *ngSwitchCase="'Francisco'">
+    La persona es Francisco
+  </p>
+  <p *ngSwitchCase="'Hernandez'">
+    La persona es Hernandez
+  </p>
+  <p *ngSwitchDefault>No coincide ninguno</p>
+</div>
 <!-- --------------------- -->
 <hr>
-<h1>NgModel</h1>
+<h1>*ngFor Objs</h1>
+<div>
+  <div *ngFor="let product of products">
+    <h2>{{product.price}}</h2>
+    <img [src]="product.image" alt="image" width="250">
+  </div>
+</div>
+<!-- --------------------- -->
+<hr>
+<h1>NgFor</h1>
+<input type="text" required  [(ngModel)]="newName">
+<button (click)="addName()">Add Name</button>
+<ul>
+  <li *ngIf="names.length == 0">La lista esta vacia</li>
+  <li *ngFor="let name of names; index as i">
+    {{i+1}} - {{name}}
+    <button (click)="deleteName(i)">Delete</button>
+  </li>
+</ul>
+<!-- --------------------- -->
+<hr>
+<h1>*ngIf</h1>
+<input type="text" required  [(ngModel)]="person.name">
+<p *ngIf="person.name === 'Aldo'">Soy Aldo</p>
+<p *ngIf="person.name == 'Fernando' && person.age == 18; else myBlock">No Soy Aldo</p>
+<ng-template #myBlock>
+  <p>Los datos no son iguales [Else]</p>
+</ng-template>
+<!-- --------------------- -->
+<hr>
+<h1>[(ngModel)]</h1>
 <p>Nombre: {{person.name}}</p>
 <input type="text" required #nameInput="ngModel" [(ngModel)]="person.name">
 <p>Valid: {{nameInput.valid}}</p>
