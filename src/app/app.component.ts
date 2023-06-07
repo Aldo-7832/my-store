@@ -7,6 +7,7 @@
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  widthImg = 10;
   name = 'Aldo';
   age = 50;
   buttonDesabled = true;
@@ -33,7 +34,7 @@ export class AppComponent {
       image: './assets/images/bike.jpg'
     },
     {
-      name: 'Colleción de albumnes',
+      name: 'ColleciÃ³n de albumnes',
       price: 34,
       image: './assets/images/album.jpg'
     },
